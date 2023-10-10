@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Normal Form</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+</head>
+<body>
+
+    <form id="form" autocomplete="off">
+        <label class="labelClass" for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" class="user" onfocusout="firstNameValidation()"  placeholder="Enter your first name">
+        <span  id="spanFirstName" style="visibility: hidden;color: red;">This is not a valid name</span>
+        <br>
+        <br>
+        <label class="labelClass" for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" class="user" onfocusout="lastNameValidation()" placeholder="Enter your last name">
+        <span id="spanLastName" style="visibility: hidden;color: red">This is not a valid name</span>
+        <br>
+        <br>
+        <label class="labelClass" for="userName">User Name:</label>
+        <input type="text" id="userName" name="userName" class="user" onfocusout="userNamevalidation()"  placeholder="Enter your User Name">
+        <span id="spanUserName" style="visibility: hidden;color: red">This is not a valid user name</span>
+        <br>
+        <br>
+        <label class="labelClass" for="userEmail" style="margin-right:54px;">Email:</label>
+        <input type="email" id="userEmail" name="userEmail" class="user" onfocusout="emailvalidation()" placeholder="Enter your Email Address">
+        <span id="spanEmailAddress" style="visibility: hidden;color: red">This is not a valid email id</span>
+        <br>
+        <br>
+        <label class="labelClass" for="userAge" style="margin-right:65px;">Age:</label>
+        <input type="number" id="userAge" name="userAge" class="user" onfocusout="ageValidation()" placeholder="Enter Age">
+        <span id="spanAge" style="visibility: hidden;color: red">This is not a valid age</span>
+        <br>
+        <br>
+        <label class="labelClass" for="userPhoneNumber" style="margin-right:40px;">Number:</label>
+        <input type="number" id="userPhoneNumber" name="userPhoneNumber" class="user" onfocusout="phoneNumberValidation()" placeholder="Enter phone Number.">
+        <span id="spanPhoneNumber" style="visibility: hidden;color: red">This is not a valid phone number</span>
+        <br>
+        <br>
+        <label class="labelClass" for="userAddress" style="margin-right:40px;">Address:</label>
+        <textarea rows="4" cols="50" placeholder="Enter your Address here" class="user" id="userAddress" name="userAddress"></textarea>
+        <br>
+        <br>
+        <label class="labelClass" for="userPassword" style="margin-right:33px;">Password:</label>
+        <input type="password" id="userPassword" name="userPassword" class="user" onfocusout="passwordValidation()" placeholder="Enter password.">
+        <span id="spanPassword" style="visibility: hidden;color: red">Password must be 8 character long,less than 12,one capital Alphabet,one small alphabet and one special character</span>
+        <br>
+        <br>
+        <img src="profile.jpg" alt="an image" id="imgsrc">
+        <label for="imageUpdate">Upload image</label>
+        <input type="file" accept="image/jpeg,image/jpg" id="imageUpdate"oninput="newImageUpdate()">
+        <span id="spanImage" style="visibility: hidden;color: red">Image must be less than 100kb</span>
+
+     
+        <input disabled type="submit" value="Submit" id="button">
+
+</form>
+  
+
+    <script src="myscripts.js">
+
+
+
+      /*  function check() {
+
+            let firstName=document.getElementById("firstName").value;
+            let lastName=document.getElementById("lastName").value;
+            let userName=document.getElementById("userName").value;
+            let userEmail=document.getElementById("userEmail").value;
+            let userAge=document.getElementById("userAge").value;
+            let userPhoneNumber=document.getElementById("userPhoneNumber").value;
+            let userAddress=document.getElementById("userAddress").value;
+            let userPassword=document.getElementById("userPassword").value;
+
+            
+           /* console.log(firstName);
+            console.log(lastName);
+            console.log(userName);
+            console.log(userEmail);
+            console.log(userAge);
+            console.log(userPhoneNumber);
+            console.log(userAddress);
+            console.log(userPassword);
+
+
+                    //Regx Implementation
+
+                    const nameRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
+                    const userNameRegx=/^[a-zA-Z0-9_]+$/;
+                    const emailRegex = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
+                    const ageRegx=/^[0-9]+$/;
+                    const phoneNumberRegx=/^01[3-9][0-9]{8}$/;
+                    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=.{8,11}$)/;
+
+                    let result=true;
+
+
+                    let firstNameResult=nameRegex.test(firstName);
+
+                        console.log(firstNameResult);
+
+                    let lastNameResult=nameRegex.test(lastName);
+                        console.log(lastNameResult);
+
+                    let userNameResult=userNameRegx.test(userName);
+                        console.log(lastNameResult);
+
+                    let emailResult=emailRegex.test(userEmail);
+                        console.log(emailResult);
+
+                    let ageResult=ageRegx.test(userAge);
+                        console.log(ageResult);
+                    
+                    let phoneNumberResult=phoneNumberRegx.test(userPhoneNumber);
+                        console.log(phoneNumberResult);
+
+                    let passwordResult=passwordRegex.test(userPassword);
+                        console.log(passwordResult);
+
+                       
+
+                 if(firstNameResult){
+                    console.log(firstNameResult);
+                    document.getElementById("spanFirstName").style.visibility="hidden";
+                        if(lastNameResult){
+                            console.log(lastNameResult);
+                            document.getElementById("spanLastName").style.visibility="hidden";
+                                if(userNameResult){
+                                    console.log(userNameResult);
+                                    document.getElementById("spanUserName").style.visibility="hidden";
+                                        if(emailResult){
+                                            console.log(emailResult);
+                                            document.getElementById("spanEmailAddress").style.visibility="hidden";
+                                                if(ageResult){
+                                                    console.log(ageResult);
+                                                    document.getElementById("spanAge").style.visibility="hidden";
+                                                    if(phoneNumberResult){
+                                                        console.log(phoneNumberResult);
+                                                        document.getElementById("spanPhoneNumber").style.visibility="hidden";
+                                                            if(passwordResult){
+                                                                console.log(passwordResult);
+                                                                document.getElementById("spanPassword").style.visibility="hidden";
+                                                                alert("Successfully Registered!!");
+
+                                                            }
+                                                            else{
+                                                                console.log("This is not a valid Password");
+                                                                document.getElementById("spanPassword").style.visibility="visible";
+                                                            }
+                                                    }
+                                                    else{
+                                                        console.log("This is not a valid Phone Number");
+                                                        document.getElementById("spanPhoneNumber").style.visibility="visible";
+
+                                                    }
+
+                                                }
+                                                else{
+                                                    console.log("This is not a valid Age");
+                                                    document.getElementById("spanAge").style.visibility="visible";
+
+                                                }
+
+                                        }
+                                        else{
+                                            console.log("This is not a valid email address");
+                                            document.getElementById("spanEmailAddress").style.visibility="visible";
+
+                                        }
+                                }
+                                else{
+                                    console.log("This is not a valid user name");
+                                    document.getElementById("spanUserName").style.visibility="visible";
+
+                                }
+                        }
+                        else{
+                            console.log("This is not a valid last name");
+                            document.getElementById("spanLastName").style.visibility="visible";
+                        }
+                 }
+                 else{
+                    console.log("This is not a valid first name");
+                    document.getElementById("spanFirstName").style.visibility="visible";
+                   
+                    
+                 }
+
+        
+        }*/
+    </script>
+</body>
+</html>
